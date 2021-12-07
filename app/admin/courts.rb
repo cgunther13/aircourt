@@ -1,5 +1,7 @@
 ActiveAdmin.register Court do
 
+ permit_params :renter_id, :court_type, :directions, :court_rules, :location, :photo, :max_guests
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

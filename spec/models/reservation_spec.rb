@@ -4,6 +4,8 @@ RSpec.describe Reservation, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:court) }
+
     it { should belong_to(:vistor) }
 
     end

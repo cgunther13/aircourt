@@ -3,6 +3,9 @@ class Court < ApplicationRecord
 
   # Direct associations
 
+  has_many   :reservations,
+             :dependent => :destroy
+
   belongs_to :renter
 
   # Indirect associations

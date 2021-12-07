@@ -4,6 +4,8 @@ RSpec.describe Court, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:reservations) }
+
     it { should belong_to(:renter) }
 
     end

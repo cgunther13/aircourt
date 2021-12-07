@@ -1,6 +1,8 @@
 class Reservation < ApplicationRecord
   # Direct associations
 
+  belongs_to :court
+
   belongs_to :vistor,
              :class_name => "Visitor"
 

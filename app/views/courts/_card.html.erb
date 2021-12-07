@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Renter</dt>
       <!-- Display renter_id start -->
-      <dd><%= court.renter_id %></dd>
+      <dd>
+        <% if @court.renter.present? %>
+          <%= link_to court.renter, court.renter %>
+        <% end %>
+      </dd>
       <!-- Display renter_id end -->
 
       <dt>Court type</dt>

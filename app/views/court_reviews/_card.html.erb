@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Reservation</dt>
       <!-- Display reservation_id start -->
-      <dd><%= court_review.reservation_id %></dd>
+      <dd>
+        <% if @court_review.reservation.present? %>
+          <%= link_to court_review.reservation, court_review.reservation %>
+        <% end %>
+      </dd>
       <!-- Display reservation_id end -->
 
       <dt>Body</dt>

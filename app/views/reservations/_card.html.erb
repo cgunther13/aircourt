@@ -17,12 +17,20 @@
 
       <dt>Court</dt>
       <!-- Display court_id start -->
-      <dd><%= reservation.court_id %></dd>
+      <dd>
+        <% if @reservation.court.present? %>
+          <%= link_to reservation.court, reservation.court %>
+        <% end %>
+      </dd>
       <!-- Display court_id end -->
 
       <dt>Vistor</dt>
       <!-- Display vistor_id start -->
-      <dd><%= reservation.vistor_id %></dd>
+      <dd>
+        <% if @reservation.vistor.present? %>
+          <%= link_to reservation.vistor, reservation.vistor %>
+        <% end %>
+      </dd>
       <!-- Display vistor_id end -->
 
     </dl>

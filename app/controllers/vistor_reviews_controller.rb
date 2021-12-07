@@ -1,25 +1,20 @@
 class VistorReviewsController < ApplicationController
   before_action :set_vistor_review, only: %i[show edit update destroy]
 
-  # GET /vistor_reviews
   def index
     @q = VistorReview.ransack(params[:q])
     @vistor_reviews = @q.result(distinct: true).includes(:reservation,
                                                          :renter).page(params[:page]).per(10)
   end
 
-  # GET /vistor_reviews/1
   def show; end
 
-  # GET /vistor_reviews/new
   def new
     @vistor_review = VistorReview.new
   end
 
-  # GET /vistor_reviews/1/edit
   def edit; end
 
-  # POST /vistor_reviews
   def create
     @vistor_review = VistorReview.new(vistor_review_params)
 
@@ -35,7 +30,6 @@ class VistorReviewsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /vistor_reviews/1
   def update
     if @vistor_review.update(vistor_review_params)
       redirect_to @vistor_review,
@@ -45,7 +39,6 @@ class VistorReviewsController < ApplicationController
     end
   end
 
-  # DELETE /vistor_reviews/1
   def destroy
     @vistor_review.destroy
     message = "VistorReview was successfully deleted."
@@ -58,12 +51,10 @@ class VistorReviewsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_vistor_review
     @vistor_review = VistorReview.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def vistor_review_params
     params.require(:vistor_review).permit(:reservation_id, :body, :score)
   end

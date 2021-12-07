@@ -1,27 +1,22 @@
 class VisitorsController < ApplicationController
   before_action :set_visitor, only: %i[show edit update destroy]
 
-  # GET /visitors
   def index
     @q = Visitor.ransack(params[:q])
     @visitors = @q.result(distinct: true).includes(:reservations,
                                                    :court_reviews, :courts_played_at).page(params[:page]).per(10)
   end
 
-  # GET /visitors/1
   def show
     @reservation = Reservation.new
   end
 
-  # GET /visitors/new
   def new
     @visitor = Visitor.new
   end
 
-  # GET /visitors/1/edit
   def edit; end
 
-  # POST /visitors
   def create
     @visitor = Visitor.new(visitor_params)
 
@@ -32,7 +27,6 @@ class VisitorsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /visitors/1
   def update
     if @visitor.update(visitor_params)
       redirect_to @visitor, notice: "Visitor was successfully updated."
@@ -41,7 +35,6 @@ class VisitorsController < ApplicationController
     end
   end
 
-  # DELETE /visitors/1
   def destroy
     @visitor.destroy
     redirect_to visitors_url, notice: "Visitor was successfully destroyed."
@@ -49,12 +42,10 @@ class VisitorsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_visitor
     @visitor = Visitor.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def visitor_params
     params.require(:visitor).permit(:email, :password, :username,
                                     :first_name, :last_name, :sports_interests)

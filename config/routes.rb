@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :court_reviews
   resources :reservations
   resources :courts
   resources :renters

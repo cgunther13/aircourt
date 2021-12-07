@@ -1,4 +1,6 @@
 class Court < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
+
   enum court_type: {"tennis_basketball_baseball_swimming"=>0} 
 
   # Direct associations

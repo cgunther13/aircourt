@@ -32,7 +32,9 @@
 
       <dt>Photo</dt>
       <!-- Display photo start -->
-      <dd><%= court.photo %></dd>
+      <dd>
+        <%= cl_image_tag @court.photo, class: "img-fluid" %>
+      </dd>
       <!-- Display photo end -->
 
       <dt>Max guests</dt>

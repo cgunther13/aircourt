@@ -12,6 +12,8 @@ class CourtResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :reservations
+
   belongs_to :renter
 
   # Indirect associations

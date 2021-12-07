@@ -8,6 +8,8 @@ class VistorReviewResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :reservation
+
   # Indirect associations
 
 end

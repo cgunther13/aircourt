@@ -1,0 +1,109 @@
+<% was_validated = reservation.errors.any? %>
+
+<%= form_with(model: reservation, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for start_time start -->
+  <div class="form-group">
+    <% start_time_class = "form-control" %>
+    <% start_time_was_invalid = reservation.errors.include?(:start_time) %>
+
+    <% if was_validated %>
+      <% if start_time_was_invalid %>
+        <% start_time_class << " is-invalid" %>
+      <% else %>
+        <% start_time_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :start_time %>
+    <!-- Input for start_time start -->
+    <%= f.datetime_select :start_time, class: start_time_class, placeholder: "Enter start time" %>
+    <!-- Input for start_time end -->
+    <% if start_time_was_invalid %>
+      <% reservation.errors.full_messages_for(:start_time).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for start_time end -->
+  <!-- Label and input for end_time start -->
+  <div class="form-group">
+    <% end_time_class = "form-control" %>
+    <% end_time_was_invalid = reservation.errors.include?(:end_time) %>
+
+    <% if was_validated %>
+      <% if end_time_was_invalid %>
+        <% end_time_class << " is-invalid" %>
+      <% else %>
+        <% end_time_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :end_time %>
+    <!-- Input for end_time start -->
+    <%= f.datetime_select :end_time, class: end_time_class, placeholder: "Enter end time" %>
+    <!-- Input for end_time end -->
+    <% if end_time_was_invalid %>
+      <% reservation.errors.full_messages_for(:end_time).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for end_time end -->
+  <!-- Label and input for court_id start -->
+  <div class="form-group">
+    <% court_class = "form-control" %>
+    <% court_was_invalid = reservation.errors.include?(:court) %>
+
+    <% if was_validated %>
+      <% if court_was_invalid %>
+        <% court_class << " is-invalid" %>
+      <% else %>
+        <% court_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :court_id %>
+    <!-- Input for court_id start -->
+    <%= f.number_field :court_id, class: court_class, placeholder: "Enter court" %>
+    <!-- Input for court_id end -->
+    <% if court_was_invalid %>
+      <% reservation.errors.full_messages_for(:court).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for court_id end -->
+  <!-- Label and input for vistor_id start -->
+  <div class="form-group">
+    <% vistor_class = "form-control" %>
+    <% vistor_was_invalid = reservation.errors.include?(:vistor) %>
+
+    <% if was_validated %>
+      <% if vistor_was_invalid %>
+        <% vistor_class << " is-invalid" %>
+      <% else %>
+        <% vistor_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :vistor_id %>
+    <!-- Input for vistor_id start -->
+    <%= f.number_field :vistor_id, class: vistor_class, placeholder: "Enter vistor" %>
+    <!-- Input for vistor_id end -->
+    <% if vistor_was_invalid %>
+      <% reservation.errors.full_messages_for(:vistor).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for vistor_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

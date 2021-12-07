@@ -3,6 +3,10 @@ class Visitor < ApplicationRecord
 
   # Direct associations
 
+  has_many   :reservations,
+             :foreign_key => "vistor_id",
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations

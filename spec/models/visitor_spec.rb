@@ -4,6 +4,8 @@ RSpec.describe Visitor, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:reservations) }
+
     end
 
     describe "InDirect Associations" do

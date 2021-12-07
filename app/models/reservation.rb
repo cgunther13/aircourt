@@ -1,6 +1,9 @@
 class Reservation < ApplicationRecord
   # Direct associations
 
+  belongs_to :vistor,
+             :class_name => "Visitor"
+
   # Indirect associations
 
   # Validations

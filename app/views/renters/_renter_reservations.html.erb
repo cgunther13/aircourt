@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Reservations
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @renter.reservations.each do |reservation| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <a href="/reservations/<%= reservation.id %>">
+          <%= reservation %>
+        </a>
+        <!-- Show link end -->
+
+      </li>
+    <% end %>
+
+  </ul>
+</div>

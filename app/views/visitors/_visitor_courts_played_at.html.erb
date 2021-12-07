@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Courts Played At
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @visitor.courts_played_at.each do |court| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <a href="/courts/<%= court.id %>">
+          <%= court %>
+        </a>
+        <!-- Show link end -->
+
+      </li>
+    <% end %>
+
+  </ul>
+</div>

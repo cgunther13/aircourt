@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Reservations
+
+    <a data-toggle="collapse" href="#visitor_reservations_new_form">
+      Add reservation
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @visitor.reservations.each do |reservation| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to reservation, reservation %>
+        <!-- Show link end -->
+
+        <!-- Delete link start -->
+        <%= link_to reservation, method: :delete, data: { confirm: "Do you really want to delete this reservation" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <!-- Delete link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="visitor_reservations_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>

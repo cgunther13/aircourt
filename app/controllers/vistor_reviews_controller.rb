@@ -42,8 +42,14 @@ class VistorReviewsController < ApplicationController
   # DELETE /vistor_reviews/1
   def destroy
     @vistor_review.destroy
-    redirect_to vistor_reviews_url, notice: 'Vistor review was successfully destroyed.'
+    message = "VistorReview was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to vistor_reviews_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

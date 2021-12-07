@@ -42,7 +42,7 @@
 
     <%= f.label :court_type %>
     <!-- Input for court_type start -->
-    <%= f.number_field :court_type, class: court_type_class, placeholder: "Enter court type" %>
+    <%= f.select :court_type, options_for_select(Court.court_types.keys), {}, class: "form-control" %>
     <!-- Input for court_type end -->
     <% if court_type_was_invalid %>
       <% court.errors.full_messages_for(:court_type).each do |message| %>

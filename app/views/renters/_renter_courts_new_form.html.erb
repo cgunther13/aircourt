@@ -13,7 +13,7 @@
     <%= f.label :court_type %>
 
     <!-- Input for court_type start -->
-    <%= f.text_field :court_type, class: "form-control" %>
+    <%= f.select :court_type, options_for_select(Court.court_types.keys), {}, class: "form-control" %>
     <!-- Input for court_type end -->
   </div>
   <!-- Label and input for court_type end -->

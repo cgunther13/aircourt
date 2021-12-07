@@ -6,32 +6,24 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Start time</dt>
-      <!-- Display start_time start -->
       <dd><%= reservation.start_time %></dd>
-      <!-- Display start_time end -->
 
       <dt>End time</dt>
-      <!-- Display end_time start -->
       <dd><%= reservation.end_time %></dd>
-      <!-- Display end_time end -->
 
       <dt>Court</dt>
-      <!-- Display court_id start -->
       <dd>
         <% if @reservation.court.present? %>
           <%= link_to reservation.court, reservation.court %>
         <% end %>
       </dd>
-      <!-- Display court_id end -->
 
       <dt>Vistor</dt>
-      <!-- Display vistor_id start -->
       <dd>
         <% if @reservation.vistor.present? %>
           <%= link_to reservation.vistor, reservation.vistor %>
         <% end %>
       </dd>
-      <!-- Display vistor_id end -->
 
     </dl>
 
@@ -40,21 +32,17 @@
         <%= link_to_show_or_back reservation, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link reservation start -->
       <div class="col">
         <%= link_to edit_reservation_url(reservation), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link reservation end -->
 
-      <!-- Delete link reservation start -->
       <div class="col">
         <%= link_to reservation, method: :delete, data: { confirm: "Do you really want to delete this reservation?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link reservation end -->
     </div>
   </div>
 

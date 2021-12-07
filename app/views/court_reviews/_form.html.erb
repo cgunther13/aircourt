@@ -1,7 +1,6 @@
 <% was_validated = court_review.errors.any? %>
 
 <%= form_with(model: court_review, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for reservation_id start -->
   <div class="form-group">
     <% reservation_class = "form-control" %>
     <% reservation_was_invalid = court_review.errors.include?(:reservation) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :reservation_id %>
-    <!-- Input for reservation_id start -->
     <%= f.collection_select :reservation_id, Reservation.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for reservation_id end -->
     <% if reservation_was_invalid %>
       <% court_review.errors.full_messages_for(:reservation).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for reservation_id end -->
-  <!-- Label and input for body start -->
   <div class="form-group">
     <% body_class = "form-control" %>
     <% body_was_invalid = court_review.errors.include?(:body) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :body %>
-    <!-- Input for body start -->
     <%= f.text_area :body, class: body_class, placeholder: "Enter body" %>
-    <!-- Input for body end -->
     <% if body_was_invalid %>
       <% court_review.errors.full_messages_for(:body).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for body end -->
-  <!-- Label and input for score start -->
   <div class="form-group">
     <% score_class = "form-control" %>
     <% score_was_invalid = court_review.errors.include?(:score) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :score %>
-    <!-- Input for score start -->
     <%= f.number_field :score, class: score_class, placeholder: "Enter score" %>
-    <!-- Input for score end -->
     <% if score_was_invalid %>
       <% court_review.errors.full_messages_for(:score).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,6 +67,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for score end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

@@ -1,7 +1,6 @@
 <% was_validated = court.errors.any? %>
 
 <%= form_with(model: court, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for renter_id start -->
   <div class="form-group">
     <% renter_class = "form-control" %>
     <% renter_was_invalid = court.errors.include?(:renter) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :renter_id %>
-    <!-- Input for renter_id start -->
     <%= f.collection_select :renter_id, Renter.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for renter_id end -->
     <% if renter_was_invalid %>
       <% court.errors.full_messages_for(:renter).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for renter_id end -->
-  <!-- Label and input for court_type start -->
   <div class="form-group">
     <% court_type_class = "form-control" %>
     <% court_type_was_invalid = court.errors.include?(:court_type) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :court_type %>
-    <!-- Input for court_type start -->
     <%= f.select :court_type, options_for_select(Court.court_types.keys), {}, class: "form-control" %>
-    <!-- Input for court_type end -->
     <% if court_type_was_invalid %>
       <% court.errors.full_messages_for(:court_type).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for court_type end -->
-  <!-- Label and input for directions start -->
   <div class="form-group">
     <% direction_class = "form-control" %>
     <% direction_was_invalid = court.errors.include?(:direction) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :directions %>
-    <!-- Input for directions start -->
     <%= f.text_area :directions, class: direction_class, placeholder: "Enter direction" %>
-    <!-- Input for directions end -->
     <% if direction_was_invalid %>
       <% court.errors.full_messages_for(:direction).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for directions end -->
-  <!-- Label and input for court_rules start -->
   <div class="form-group">
     <% court_rule_class = "form-control" %>
     <% court_rule_was_invalid = court.errors.include?(:court_rule) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :court_rules %>
-    <!-- Input for court_rules start -->
     <%= f.text_area :court_rules, class: court_rule_class, placeholder: "Enter court rule" %>
-    <!-- Input for court_rules end -->
     <% if court_rule_was_invalid %>
       <% court.errors.full_messages_for(:court_rule).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,8 +89,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for court_rules end -->
-  <!-- Label and input for location start -->
   <div class="form-group">
     <% location_class = "form-control" %>
     <% location_was_invalid = court.errors.include?(:location) %>
@@ -119,9 +102,7 @@
     <% end %>
 
     <%= f.label :location %>
-    <!-- Input for location start -->
     <%= f.text_field :location, class: location_class, placeholder: "Enter location" %>
-    <!-- Input for location end -->
     <% if location_was_invalid %>
       <% court.errors.full_messages_for(:location).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -130,8 +111,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for location end -->
-  <!-- Label and input for photo start -->
   <div class="form-group">
     <% photo_class = "form-control" %>
     <% photo_was_invalid = court.errors.include?(:photo) %>
@@ -145,9 +124,7 @@
     <% end %>
 
     <%= f.label :photo %>
-    <!-- Input for photo start -->
     <%= f.file_field :photo, class: "form-control" %>
-    <!-- Input for photo end -->
     <% if photo_was_invalid %>
       <% court.errors.full_messages_for(:photo).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -156,8 +133,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for photo end -->
-  <!-- Label and input for max_guests start -->
   <div class="form-group">
     <% max_guest_class = "form-control" %>
     <% max_guest_was_invalid = court.errors.include?(:max_guest) %>
@@ -171,9 +146,7 @@
     <% end %>
 
     <%= f.label :max_guests %>
-    <!-- Input for max_guests start -->
     <%= f.number_field :max_guests, class: max_guest_class, placeholder: "Enter max guest" %>
-    <!-- Input for max_guests end -->
     <% if max_guest_was_invalid %>
       <% court.errors.full_messages_for(:max_guest).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -182,6 +155,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for max_guests end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

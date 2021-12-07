@@ -12,4 +12,11 @@ class VistorReviewResource < ApplicationResource
 
   # Indirect associations
 
+  has_one    :renter
+
+  filter :court_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:renter).where(:reservations => {:court_id => value})
+    end
+  end
 end

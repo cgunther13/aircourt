@@ -3,6 +3,8 @@ class Court < ApplicationRecord
 
   # Direct associations
 
+  belongs_to :renter
+
   # Indirect associations
 
   # Validations

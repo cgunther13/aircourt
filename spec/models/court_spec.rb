@@ -4,6 +4,8 @@ RSpec.describe Court, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:renter) }
+
     end
 
     describe "InDirect Associations" do

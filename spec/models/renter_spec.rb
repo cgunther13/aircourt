@@ -4,6 +4,8 @@ RSpec.describe Renter, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:courts) }
+
     end
 
     describe "InDirect Associations" do

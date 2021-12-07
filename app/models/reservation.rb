@@ -14,6 +14,10 @@ class Reservation < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :renter,
+             :through => :court,
+             :source => :renter
+
   # Validations
 
   # Scopes

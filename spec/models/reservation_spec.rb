@@ -16,6 +16,8 @@ RSpec.describe Reservation, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_one(:renter) }
+
     end
 
     describe "Validations" do

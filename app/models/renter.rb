@@ -6,6 +6,10 @@ class Renter < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :reservations,
+             :through => :courts,
+             :source => :reservations
+
   has_many   :vistor_reviews,
              :through => :reservations,
              :source => :vistor_reviews

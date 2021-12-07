@@ -10,6 +10,8 @@ RSpec.describe Renter, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:reservations) }
+
     it { should have_many(:vistor_reviews) }
 
     end

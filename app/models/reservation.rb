@@ -2,21 +2,21 @@ class Reservation < ApplicationRecord
   # Direct associations
 
   has_many   :vistor_reviews,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :court_reviews,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :court
 
   belongs_to :vistor,
-             :class_name => "Visitor"
+             class_name: "Visitor"
 
   # Indirect associations
 
   has_one    :renter,
-             :through => :court,
-             :source => :renter
+             through: :court,
+             source: :renter
 
   # Validations
 
@@ -25,5 +25,4 @@ class Reservation < ApplicationRecord
   def to_s
     start_time
   end
-
 end

@@ -17,7 +17,7 @@ class CourtReviewResource < ApplicationResource
 
   filter :vistor_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:vistor).where(:reservations => {:vistor_id => value})
+      scope.eager_load(:vistor).where(reservations: { vistor_id: value })
     end
   end
 end

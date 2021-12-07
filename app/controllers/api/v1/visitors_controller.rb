@@ -13,7 +13,7 @@ class Api::V1::VisitorsController < Api::V1::GraphitiController
     visitor = VisitorResource.build(params)
 
     if visitor.save
-      render jsonapi: visitor, status: 201
+      render jsonapi: visitor, status: :created
     else
       render jsonapi_errors: visitor
     end
@@ -33,7 +33,7 @@ class Api::V1::VisitorsController < Api::V1::GraphitiController
     visitor = VisitorResource.find(params)
 
     if visitor.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: visitor
     end

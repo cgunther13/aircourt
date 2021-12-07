@@ -1,9 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Reservation, type: :model do
-  
-    describe "Direct Associations" do
-
+  describe "Direct Associations" do
     it { should have_many(:vistor_reviews) }
 
     it { should have_many(:court_reviews) }
@@ -11,16 +9,12 @@ RSpec.describe Reservation, type: :model do
     it { should belong_to(:court) }
 
     it { should belong_to(:vistor) }
+  end
 
-    end
-
-    describe "InDirect Associations" do
-
+  describe "InDirect Associations" do
     it { should have_one(:renter) }
+  end
 
-    end
-
-    describe "Validations" do
-
-    end
+  describe "Validations" do
+  end
 end

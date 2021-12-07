@@ -1,6 +1,5 @@
 ActiveAdmin.register CourtReview do
-
- permit_params :reservation_id, :body, :score
+  permit_params :reservation_id, :body, :score
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,5 +13,4 @@ ActiveAdmin.register CourtReview do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

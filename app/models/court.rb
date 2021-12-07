@@ -1,10 +1,10 @@
-require 'open-uri'
+require "open-uri"
 class Court < ApplicationRecord
   before_validation :geocode_location
 
   def geocode_location
-    if self.location.present?
-      url = "https://maps.googleapis.com/maps/api/geocode/json?key=#{ENV['GMAP_API_KEY']}&address=#{URI.encode(self.location)}"
+    if location.present?
+      url = "https://maps.googleapis.com/maps/api/geocode/json?key=#{ENV['GMAP_API_KEY']}&address=#{URI.encode(location)}"
 
       raw_data = open(url).read
 
@@ -21,33 +21,32 @@ class Court < ApplicationRecord
   end
   mount_uploader :photo, PhotoUploader
 
-  enum court_type: {"tennis_basketball_baseball_swimming"=>0} 
+  enum court_type: { "tennis_basketball_baseball_swimming" => 0 }
 
   # Direct associations
 
   has_many   :reservations,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :renter
 
   # Indirect associations
 
   has_many   :vistors,
-             :through => :reservations,
-             :source => :vistor
+             through: :reservations,
+             source: :vistor
 
   # Validations
 
-  validates :court_type, :presence => true
+  validates :court_type, presence: true
 
-  validates :location, :presence => true
+  validates :location, presence: true
 
-  validates :max_guests, :numericality => { :greater_than => 0 }
+  validates :max_guests, numericality: { greater_than: 0 }
 
   # Scopes
 
   def to_s
     renter.to_s
   end
-
 end

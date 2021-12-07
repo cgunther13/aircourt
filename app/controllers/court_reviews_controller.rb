@@ -1,15 +1,15 @@
 class CourtReviewsController < ApplicationController
-  before_action :set_court_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_court_review, only: %i[show edit update destroy]
 
   # GET /court_reviews
   def index
     @q = CourtReview.ransack(params[:q])
-    @court_reviews = @q.result(:distinct => true).includes(:reservation, :vistor).page(params[:page]).per(10)
+    @court_reviews = @q.result(distinct: true).includes(:reservation,
+                                                        :vistor).page(params[:page]).per(10)
   end
 
   # GET /court_reviews/1
-  def show
-  end
+  def show; end
 
   # GET /court_reviews/new
   def new
@@ -17,17 +17,16 @@ class CourtReviewsController < ApplicationController
   end
 
   # GET /court_reviews/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /court_reviews
   def create
     @court_review = CourtReview.new(court_review_params)
 
     if @court_review.save
-      message = 'CourtReview was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "CourtReview was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @court_review, notice: message
       end
@@ -39,7 +38,8 @@ class CourtReviewsController < ApplicationController
   # PATCH/PUT /court_reviews/1
   def update
     if @court_review.update(court_review_params)
-      redirect_to @court_review, notice: 'Court review was successfully updated.'
+      redirect_to @court_review,
+                  notice: "Court review was successfully updated."
     else
       render :edit
     end
@@ -49,22 +49,22 @@ class CourtReviewsController < ApplicationController
   def destroy
     @court_review.destroy
     message = "CourtReview was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to court_reviews_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_court_review
-      @court_review = CourtReview.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def court_review_params
-      params.require(:court_review).permit(:reservation_id, :body, :score)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_court_review
+    @court_review = CourtReview.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def court_review_params
+    params.require(:court_review).permit(:reservation_id, :body, :score)
+  end
 end

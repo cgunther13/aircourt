@@ -13,7 +13,7 @@ class Api::V1::VistorReviewsController < Api::V1::GraphitiController
     vistor_review = VistorReviewResource.build(params)
 
     if vistor_review.save
-      render jsonapi: vistor_review, status: 201
+      render jsonapi: vistor_review, status: :created
     else
       render jsonapi_errors: vistor_review
     end
@@ -33,7 +33,7 @@ class Api::V1::VistorReviewsController < Api::V1::GraphitiController
     vistor_review = VistorReviewResource.find(params)
 
     if vistor_review.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: vistor_review
     end

@@ -7,7 +7,8 @@ class VisitorResource < ApplicationResource
   attribute :username, :string
   attribute :first_name, :string
   attribute :last_name, :string
-  attribute :sports_interests, :string_enum, allow: Visitor.sports_interests.keys
+  attribute :sports_interests, :string_enum,
+            allow: Visitor.sports_interests.keys
 
   # Direct associations
 
@@ -26,5 +27,4 @@ class VisitorResource < ApplicationResource
       end
     end
   end
-
 end

@@ -10,7 +10,7 @@ class RenterResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :courts
+  has_many :courts
 
   # Indirect associations
 
@@ -29,5 +29,4 @@ class RenterResource < ApplicationResource
       end
     end
   end
-
 end

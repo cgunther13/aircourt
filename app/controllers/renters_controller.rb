@@ -1,10 +1,11 @@
 class RentersController < ApplicationController
-  before_action :set_renter, only: [:show, :edit, :update, :destroy]
+  before_action :set_renter, only: %i[show edit update destroy]
 
   # GET /renters
   def index
     @q = Renter.ransack(params[:q])
-    @renters = @q.result(:distinct => true).includes(:courts, :vistor_reviews, :reservations).page(params[:page]).per(10)
+    @renters = @q.result(distinct: true).includes(:courts, :vistor_reviews,
+                                                  :reservations).page(params[:page]).per(10)
   end
 
   # GET /renters/1
@@ -18,15 +19,14 @@ class RentersController < ApplicationController
   end
 
   # GET /renters/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /renters
   def create
     @renter = Renter.new(renter_params)
 
     if @renter.save
-      redirect_to @renter, notice: 'Renter was successfully created.'
+      redirect_to @renter, notice: "Renter was successfully created."
     else
       render :new
     end
@@ -35,7 +35,7 @@ class RentersController < ApplicationController
   # PATCH/PUT /renters/1
   def update
     if @renter.update(renter_params)
-      redirect_to @renter, notice: 'Renter was successfully updated.'
+      redirect_to @renter, notice: "Renter was successfully updated."
     else
       render :edit
     end
@@ -44,17 +44,19 @@ class RentersController < ApplicationController
   # DELETE /renters/1
   def destroy
     @renter.destroy
-    redirect_to renters_url, notice: 'Renter was successfully destroyed.'
+    redirect_to renters_url, notice: "Renter was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_renter
-      @renter = Renter.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def renter_params
-      params.require(:renter).permit(:email, :password, :username, :first_name, :last_name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_renter
+    @renter = Renter.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def renter_params
+    params.require(:renter).permit(:email, :password, :username, :first_name,
+                                   :last_name)
+  end
 end

@@ -13,7 +13,7 @@ class Api::V1::CourtsController < Api::V1::GraphitiController
     court = CourtResource.build(params)
 
     if court.save
-      render jsonapi: court, status: 201
+      render jsonapi: court, status: :created
     else
       render jsonapi_errors: court
     end
@@ -33,7 +33,7 @@ class Api::V1::CourtsController < Api::V1::GraphitiController
     court = CourtResource.find(params)
 
     if court.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: court
     end

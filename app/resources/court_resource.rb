@@ -20,5 +20,4 @@ class CourtResource < ApplicationResource
 
   many_to_many :vistors,
                resource: VisitorResource
-
 end

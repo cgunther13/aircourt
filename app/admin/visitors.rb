@@ -1,6 +1,6 @@
 ActiveAdmin.register Visitor do
-
- permit_params :email, :password, :username, :first_name, :last_name, :sports_interests
+  permit_params :email, :password, :username, :first_name, :last_name,
+                :sports_interests
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,5 +14,4 @@ ActiveAdmin.register Visitor do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

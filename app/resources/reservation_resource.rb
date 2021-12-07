@@ -24,7 +24,7 @@ class ReservationResource < ApplicationResource
 
   filter :renter_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:renter).where(:courts => {:renter_id => value})
+      scope.eager_load(:renter).where(courts: { renter_id: value })
     end
   end
 end

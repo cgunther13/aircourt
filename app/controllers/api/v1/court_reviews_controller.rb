@@ -13,7 +13,7 @@ class Api::V1::CourtReviewsController < Api::V1::GraphitiController
     court_review = CourtReviewResource.build(params)
 
     if court_review.save
-      render jsonapi: court_review, status: 201
+      render jsonapi: court_review, status: :created
     else
       render jsonapi_errors: court_review
     end
@@ -33,7 +33,7 @@ class Api::V1::CourtReviewsController < Api::V1::GraphitiController
     court_review = CourtReviewResource.find(params)
 
     if court_review.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: court_review
     end

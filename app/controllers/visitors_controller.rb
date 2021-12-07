@@ -1,10 +1,11 @@
 class VisitorsController < ApplicationController
-  before_action :set_visitor, only: [:show, :edit, :update, :destroy]
+  before_action :set_visitor, only: %i[show edit update destroy]
 
   # GET /visitors
   def index
     @q = Visitor.ransack(params[:q])
-    @visitors = @q.result(:distinct => true).includes(:reservations, :court_reviews, :courts_played_at).page(params[:page]).per(10)
+    @visitors = @q.result(distinct: true).includes(:reservations,
+                                                   :court_reviews, :courts_played_at).page(params[:page]).per(10)
   end
 
   # GET /visitors/1
@@ -18,15 +19,14 @@ class VisitorsController < ApplicationController
   end
 
   # GET /visitors/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /visitors
   def create
     @visitor = Visitor.new(visitor_params)
 
     if @visitor.save
-      redirect_to @visitor, notice: 'Visitor was successfully created.'
+      redirect_to @visitor, notice: "Visitor was successfully created."
     else
       render :new
     end
@@ -35,7 +35,7 @@ class VisitorsController < ApplicationController
   # PATCH/PUT /visitors/1
   def update
     if @visitor.update(visitor_params)
-      redirect_to @visitor, notice: 'Visitor was successfully updated.'
+      redirect_to @visitor, notice: "Visitor was successfully updated."
     else
       render :edit
     end
@@ -44,17 +44,19 @@ class VisitorsController < ApplicationController
   # DELETE /visitors/1
   def destroy
     @visitor.destroy
-    redirect_to visitors_url, notice: 'Visitor was successfully destroyed.'
+    redirect_to visitors_url, notice: "Visitor was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_visitor
-      @visitor = Visitor.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def visitor_params
-      params.require(:visitor).permit(:email, :password, :username, :first_name, :last_name, :sports_interests)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_visitor
+    @visitor = Visitor.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def visitor_params
+    params.require(:visitor).permit(:email, :password, :username,
+                                    :first_name, :last_name, :sports_interests)
+  end
 end

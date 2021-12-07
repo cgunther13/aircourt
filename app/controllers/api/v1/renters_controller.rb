@@ -13,7 +13,7 @@ class Api::V1::RentersController < Api::V1::GraphitiController
     renter = RenterResource.build(params)
 
     if renter.save
-      render jsonapi: renter, status: 201
+      render jsonapi: renter, status: :created
     else
       render jsonapi_errors: renter
     end
@@ -33,7 +33,7 @@ class Api::V1::RentersController < Api::V1::GraphitiController
     renter = RenterResource.find(params)
 
     if renter.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: renter
     end

@@ -7,6 +7,8 @@ class Court < ApplicationRecord
 
   # Validations
 
+  validates :max_guests, :numericality => { :greater_than => 0 }
+
   # Scopes
 
   def to_s

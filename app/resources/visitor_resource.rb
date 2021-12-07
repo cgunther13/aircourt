@@ -16,6 +16,9 @@ class VisitorResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :courts_played_at,
+               resource: CourtResource
+
   has_many :court_reviews do
     assign_each do |visitor, court_reviews|
       court_reviews.select do |c|

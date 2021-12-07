@@ -18,4 +18,7 @@ class CourtResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :vistors,
+               resource: VisitorResource
+
 end

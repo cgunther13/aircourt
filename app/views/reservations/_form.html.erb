@@ -94,7 +94,7 @@
 
     <%= f.label :vistor_id %>
     <!-- Input for vistor_id start -->
-    <%= f.number_field :vistor_id, class: vistor_class, placeholder: "Enter vistor" %>
+    <%= f.collection_select :vistor_id, Visitor.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for vistor_id end -->
     <% if vistor_was_invalid %>
       <% reservation.errors.full_messages_for(:vistor).each do |message| %>

@@ -3,7 +3,7 @@ class VisitorsController < ApplicationController
 
   # GET /visitors
   def index
-    @visitors = Visitor.all
+    @visitors = Visitor.page(params[:page]).per(10)
   end
 
   # GET /visitors/1

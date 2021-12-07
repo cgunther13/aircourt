@@ -3,7 +3,7 @@ class CourtsController < ApplicationController
 
   # GET /courts
   def index
-    @courts = Court.all
+    @courts = Court.page(params[:page]).per(10)
     @location_hash = Gmaps4rails.build_markers(@courts.where.not(:location_latitude => nil)) do |court, marker|
       marker.lat court.location_latitude
       marker.lng court.location_longitude

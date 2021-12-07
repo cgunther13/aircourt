@@ -34,6 +34,10 @@
       <div class="list-group list-group-flush">
         <%= render collection: @reservations, partial: "list_item", as: :reservation %>
       </div>
+      <div class="card-footer d-flex justify-content-center">
+        <%= paginate @reservations, theme: 'twitter-bootstrap-4' %>
+      </div>
+
     </div>
   </div>
 </div>

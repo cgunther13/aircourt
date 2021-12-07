@@ -3,7 +3,7 @@ class VistorReviewsController < ApplicationController
 
   # GET /vistor_reviews
   def index
-    @vistor_reviews = VistorReview.all
+    @vistor_reviews = VistorReview.page(params[:page]).per(10)
   end
 
   # GET /vistor_reviews/1

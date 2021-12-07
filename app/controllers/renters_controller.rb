@@ -3,7 +3,7 @@ class RentersController < ApplicationController
 
   # GET /renters
   def index
-    @renters = Renter.all
+    @renters = Renter.page(params[:page]).per(10)
   end
 
   # GET /renters/1

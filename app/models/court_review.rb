@@ -1,6 +1,8 @@
 class CourtReview < ApplicationRecord
   # Direct associations
 
+  belongs_to :reservation
+
   # Indirect associations
 
   # Validations

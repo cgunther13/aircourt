@@ -1,6 +1,9 @@
 class Reservation < ApplicationRecord
   # Direct associations
 
+  has_many   :court_reviews,
+             :dependent => :destroy
+
   belongs_to :court
 
   belongs_to :vistor,

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "visitors#index"
   resources :vistor_reviews
   resources :court_reviews
   resources :reservations

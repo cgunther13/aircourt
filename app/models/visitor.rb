@@ -7,6 +7,8 @@ class Visitor < ApplicationRecord
 
   # Validations
 
+  validates :username, :presence => true
+
   # Scopes
 
   def to_s

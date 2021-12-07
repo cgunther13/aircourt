@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   root :to => "visitors#index"
   resources :vistor_reviews
   resources :court_reviews

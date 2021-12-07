@@ -10,6 +10,10 @@ class Court < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :vistors,
+             :through => :reservations,
+             :source => :vistor
+
   # Validations
 
   validates :court_type, :presence => true

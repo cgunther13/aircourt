@@ -9,6 +9,10 @@ class Visitor < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :courts_played_at,
+             :through => :reservations,
+             :source => :court
+
   has_many   :court_reviews,
              :through => :reservations,
              :source => :court_reviews

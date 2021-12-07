@@ -12,6 +12,8 @@ RSpec.describe Court, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:vistors) }
+
     end
 
     describe "Validations" do

@@ -16,7 +16,7 @@
 
     <%= f.label :renter_id %>
     <!-- Input for renter_id start -->
-    <%= f.number_field :renter_id, class: renter_class, placeholder: "Enter renter" %>
+    <%= f.collection_select :renter_id, Renter.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for renter_id end -->
     <% if renter_was_invalid %>
       <% court.errors.full_messages_for(:renter).each do |message| %>

@@ -146,7 +146,7 @@
 
     <%= f.label :sports_interests %>
     <!-- Input for sports_interests start -->
-    <%= f.number_field :sports_interests, class: sports_interest_class, placeholder: "Enter sports interest" %>
+    <%= f.select :sports_interests, options_for_select(Visitor.sports_interests.keys), {}, class: "form-control" %>
     <!-- Input for sports_interests end -->
     <% if sports_interest_was_invalid %>
       <% visitor.errors.full_messages_for(:sports_interest).each do |message| %>

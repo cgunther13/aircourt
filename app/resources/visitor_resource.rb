@@ -16,4 +16,12 @@ class VisitorResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :court_reviews do
+    assign_each do |visitor, court_reviews|
+      court_reviews.select do |c|
+        c.id.in?(visitor.court_reviews.map(&:id))
+      end
+    end
+  end
+
 end

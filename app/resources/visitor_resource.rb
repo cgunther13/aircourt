@@ -11,6 +11,9 @@ class VisitorResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :reservations,
+             foreign_key: :vistor_id
+
   # Indirect associations
 
 end

@@ -9,6 +9,9 @@ class ReservationResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :vistor,
+             resource: VisitorResource
+
   # Indirect associations
 
 end

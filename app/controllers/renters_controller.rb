@@ -8,6 +8,7 @@ class RentersController < ApplicationController
 
   # GET /renters/1
   def show
+    @court = Court.new
   end
 
   # GET /renters/new

@@ -8,6 +8,8 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/1
   def show
+    @vistor_review = VistorReview.new
+    @court_review = CourtReview.new
   end
 
   # GET /reservations/new
@@ -24,7 +26,12 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
 
     if @reservation.save
-      redirect_to @reservation, notice: 'Reservation was successfully created.'
+      message = 'Reservation was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @reservation, notice: message
+      end
     else
       render :new
     end

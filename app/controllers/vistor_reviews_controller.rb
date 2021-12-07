@@ -24,7 +24,12 @@ class VistorReviewsController < ApplicationController
     @vistor_review = VistorReview.new(vistor_review_params)
 
     if @vistor_review.save
-      redirect_to @vistor_review, notice: 'Vistor review was successfully created.'
+      message = 'VistorReview was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @vistor_review, notice: message
+      end
     else
       render :new
     end

@@ -8,6 +8,7 @@ class VisitorsController < ApplicationController
 
   # GET /visitors/1
   def show
+    @reservation = Reservation.new
   end
 
   # GET /visitors/new

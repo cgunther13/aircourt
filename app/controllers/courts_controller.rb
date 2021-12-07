@@ -8,6 +8,7 @@ class CourtsController < ApplicationController
 
   # GET /courts/1
   def show
+    @reservation = Reservation.new
   end
 
   # GET /courts/new
@@ -24,7 +25,12 @@ class CourtsController < ApplicationController
     @court = Court.new(court_params)
 
     if @court.save
-      redirect_to @court, notice: 'Court was successfully created.'
+      message = 'Court was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @court, notice: message
+      end
     else
       render :new
     end

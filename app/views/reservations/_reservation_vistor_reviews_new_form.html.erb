@@ -1,0 +1,31 @@
+<!-- Form vistor_review start -->
+<%= form_with(model: @vistor_review, local: true) do |f| %>
+<!-- Form vistor_review end -->
+
+  <!-- Label and input for reservation_id start -->
+  <!-- Input for reservation_id start -->
+  <%= f.hidden_field :reservation_id, value: @reservation.id %>
+  <!-- Input for reservation_id end -->
+  <!-- Label and input for reservation_id end -->
+
+  <!-- Label and input for body start -->
+  <div class="form-group">
+    <%= f.label :body %>
+    <!-- Input for body start -->
+    <%= f.text_area :body, rows: "3", class: "form-control" %>
+    <!-- Input for body end -->
+  </div>
+  <!-- Label and input for body end -->
+
+  <!-- Label and input for score start -->
+  <div class="form-group">
+    <%= f.label :score %>
+
+    <!-- Input for score start -->
+    <%= f.text_field :score, class: "form-control" %>
+    <!-- Input for score end -->
+  </div>
+  <!-- Label and input for score end -->
+
+  <%= f.submit "Create vistor review", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

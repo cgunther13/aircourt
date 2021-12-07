@@ -24,7 +24,12 @@ class CourtReviewsController < ApplicationController
     @court_review = CourtReview.new(court_review_params)
 
     if @court_review.save
-      redirect_to @court_review, notice: 'Court review was successfully created.'
+      message = 'CourtReview was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @court_review, notice: message
+      end
     else
       render :new
     end

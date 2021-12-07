@@ -1,0 +1,70 @@
+<!-- Form court start -->
+<%= form_with(model: @court, local: true) do |f| %>
+<!-- Form court end -->
+
+  <!-- Label and input for renter_id start -->
+  <!-- Input for renter_id start -->
+  <%= f.hidden_field :renter_id, value: @renter.id %>
+  <!-- Input for renter_id end -->
+  <!-- Label and input for renter_id end -->
+
+  <!-- Label and input for court_type start -->
+  <div class="form-group">
+    <%= f.label :court_type %>
+
+    <!-- Input for court_type start -->
+    <%= f.text_field :court_type, class: "form-control" %>
+    <!-- Input for court_type end -->
+  </div>
+  <!-- Label and input for court_type end -->
+
+  <!-- Label and input for directions start -->
+  <div class="form-group">
+    <%= f.label :directions %>
+    <!-- Input for directions start -->
+    <%= f.text_area :directions, rows: "3", class: "form-control" %>
+    <!-- Input for directions end -->
+  </div>
+  <!-- Label and input for directions end -->
+
+  <!-- Label and input for court_rules start -->
+  <div class="form-group">
+    <%= f.label :court_rules %>
+    <!-- Input for court_rules start -->
+    <%= f.text_area :court_rules, rows: "3", class: "form-control" %>
+    <!-- Input for court_rules end -->
+  </div>
+  <!-- Label and input for court_rules end -->
+
+  <!-- Label and input for location start -->
+  <div class="form-group">
+    <%= f.label :location %>
+
+    <!-- Input for location start -->
+    <%= f.text_field :location, class: "form-control" %>
+    <!-- Input for location end -->
+  </div>
+  <!-- Label and input for location end -->
+
+  <!-- Label and input for photo start -->
+  <div class="form-group">
+    <%= f.label :photo %>
+
+    <!-- Input for photo start -->
+    <%= f.text_field :photo, class: "form-control" %>
+    <!-- Input for photo end -->
+  </div>
+  <!-- Label and input for photo end -->
+
+  <!-- Label and input for max_guests start -->
+  <div class="form-group">
+    <%= f.label :max_guests %>
+
+    <!-- Input for max_guests start -->
+    <%= f.text_field :max_guests, class: "form-control" %>
+    <!-- Input for max_guests end -->
+  </div>
+  <!-- Label and input for max_guests end -->
+
+  <%= f.submit "Create court", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

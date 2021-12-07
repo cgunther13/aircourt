@@ -16,7 +16,7 @@
 
     <%= f.label :reservation_id %>
     <!-- Input for reservation_id start -->
-    <%= f.number_field :reservation_id, class: reservation_class, placeholder: "Enter reservation" %>
+    <%= f.collection_select :reservation_id, Reservation.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for reservation_id end -->
     <% if reservation_was_invalid %>
       <% court_review.errors.full_messages_for(:reservation).each do |message| %>

@@ -10,6 +10,8 @@ RSpec.describe CourtReview, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_one(:vistor) }
+
     end
 
     describe "Validations" do

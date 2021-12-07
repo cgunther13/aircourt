@@ -10,6 +10,8 @@ RSpec.describe Visitor, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:court_reviews) }
+
     end
 
     describe "Validations" do

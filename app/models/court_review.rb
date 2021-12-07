@@ -5,6 +5,10 @@ class CourtReview < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :vistor,
+             :through => :reservation,
+             :source => :vistor
+
   # Validations
 
   validates :body, :presence => true

@@ -12,6 +12,8 @@ class CourtResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :renter
+
   # Indirect associations
 
 end

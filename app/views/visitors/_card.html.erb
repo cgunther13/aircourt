@@ -1,0 +1,66 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Visitor #<%= visitor.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Email</dt>
+      <!-- Display email start -->
+      <dd><%= visitor.email %></dd>
+      <!-- Display email end -->
+
+      <dt>Password</dt>
+      <!-- Display password start -->
+      <dd><%= visitor.password %></dd>
+      <!-- Display password end -->
+
+      <dt>Username</dt>
+      <!-- Display username start -->
+      <dd><%= visitor.username %></dd>
+      <!-- Display username end -->
+
+      <dt>First name</dt>
+      <!-- Display first_name start -->
+      <dd><%= visitor.first_name %></dd>
+      <!-- Display first_name end -->
+
+      <dt>Last name</dt>
+      <!-- Display last_name start -->
+      <dd><%= visitor.last_name %></dd>
+      <!-- Display last_name end -->
+
+      <dt>Sports interests</dt>
+      <!-- Display sports_interests start -->
+      <dd><%= visitor.sports_interests %></dd>
+      <!-- Display sports_interests end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back visitor, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link visitor start -->
+      <div class="col">
+        <%= link_to edit_visitor_url(visitor), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link visitor end -->
+
+      <!-- Delete link visitor start -->
+      <div class="col">
+        <%= link_to visitor, method: :delete, data: { confirm: "Do you really want to delete this visitor?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link visitor end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(visitor.updated_at) %> ago
+  </div>
+</div>

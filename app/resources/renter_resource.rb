@@ -14,6 +14,14 @@ class RenterResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :reservations do
+    assign_each do |renter, reservations|
+      reservations.select do |r|
+        r.id.in?(renter.reservations.map(&:id))
+      end
+    end
+  end
+
   has_many :vistor_reviews do
     assign_each do |renter, vistor_reviews|
       vistor_reviews.select do |v|

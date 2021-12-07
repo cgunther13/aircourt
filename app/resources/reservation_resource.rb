@@ -20,4 +20,11 @@ class ReservationResource < ApplicationResource
 
   # Indirect associations
 
+  has_one    :renter
+
+  filter :renter_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:renter).where(:courts => {:renter_id => value})
+    end
+  end
 end

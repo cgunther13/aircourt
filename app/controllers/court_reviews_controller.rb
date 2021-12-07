@@ -3,7 +3,8 @@ class CourtReviewsController < ApplicationController
 
   # GET /court_reviews
   def index
-    @court_reviews = CourtReview.page(params[:page]).per(10)
+    @q = CourtReview.ransack(params[:q])
+    @court_reviews = @q.result(:distinct => true).includes(:reservation, :vistor).page(params[:page]).per(10)
   end
 
   # GET /court_reviews/1

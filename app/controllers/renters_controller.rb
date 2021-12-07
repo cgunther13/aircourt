@@ -3,7 +3,8 @@ class RentersController < ApplicationController
 
   # GET /renters
   def index
-    @renters = Renter.page(params[:page]).per(10)
+    @q = Renter.ransack(params[:q])
+    @renters = @q.result(:distinct => true).includes(:courts, :vistor_reviews, :reservations).page(params[:page]).per(10)
   end
 
   # GET /renters/1

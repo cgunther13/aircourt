@@ -68,7 +68,7 @@
 
     <%= f.label :court_id %>
     <!-- Input for court_id start -->
-    <%= f.number_field :court_id, class: court_class, placeholder: "Enter court" %>
+    <%= f.collection_select :court_id, Court.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for court_id end -->
     <% if court_was_invalid %>
       <% reservation.errors.full_messages_for(:court).each do |message| %>

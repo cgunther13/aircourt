@@ -25,7 +25,7 @@
     <%= f.label :court_id %>
 
     <!-- Input for court_id start -->
-    <%= f.text_field :court_id, class: "form-control" %>
+    <%= f.collection_select :court_id, Court.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for court_id end -->
   </div>
   <!-- Label and input for court_id end -->

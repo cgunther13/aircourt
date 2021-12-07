@@ -9,6 +9,8 @@ class ReservationResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :court_reviews
+
   belongs_to :court
 
   belongs_to :vistor,

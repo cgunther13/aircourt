@@ -8,6 +8,8 @@ class CourtReviewResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :reservation
+
   # Indirect associations
 
 end

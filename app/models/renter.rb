@@ -6,6 +6,10 @@ class Renter < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :vistor_reviews,
+             :through => :reservations,
+             :source => :vistor_reviews
+
   # Validations
 
   validates :email, :uniqueness => true

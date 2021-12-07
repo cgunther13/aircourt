@@ -5,6 +5,10 @@ class VistorReview < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :renter,
+             :through => :reservation,
+             :source => :renter
+
   # Validations
 
   validates :body, :presence => true

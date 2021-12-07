@@ -12,6 +12,8 @@ RSpec.describe Court, type: :model do
 
     describe "Validations" do
 
+    it { should validate_presence_of(:court_type) }
+
     it { should validate_presence_of(:location) }
 
     it { should validate_numericality_of(:max_guests).is_greater_than(0) }

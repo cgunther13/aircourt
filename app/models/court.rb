@@ -7,6 +7,8 @@ class Court < ApplicationRecord
 
   # Validations
 
+  validates :court_type, :presence => true
+
   validates :location, :presence => true
 
   validates :max_guests, :numericality => { :greater_than => 0 }

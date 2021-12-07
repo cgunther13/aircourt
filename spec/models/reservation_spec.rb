@@ -4,6 +4,8 @@ RSpec.describe Reservation, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:vistor_reviews) }
+
     it { should have_many(:court_reviews) }
 
     it { should belong_to(:court) }

@@ -1,6 +1,8 @@
 class VistorReview < ApplicationRecord
   # Direct associations
 
+  belongs_to :reservation
+
   # Indirect associations
 
   # Validations

@@ -4,6 +4,8 @@ RSpec.describe VistorReview, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:reservation) }
+
     end
 
     describe "InDirect Associations" do
